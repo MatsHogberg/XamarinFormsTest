@@ -12,7 +12,7 @@ namespace XamarinFormsTest
 		public App ()
 		{
 			InitializeComponent();
-
+            // Test Comment.
 			MainPage = new XamarinFormsTest.MainPage();
 		}
 
