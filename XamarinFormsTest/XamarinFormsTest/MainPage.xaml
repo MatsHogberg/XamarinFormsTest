@@ -7,5 +7,5 @@
 	<Label x:Name="TestLabel" Text="Welcome to Xamarin Forms!" 
            VerticalOptions="Center" 
            HorizontalOptions="Center" />
-
+    <Button Text="Till tabbar" HorizontalOptions="CenterAndExpand" VerticalOptions="End" x:Name="btnGoToTabs" Clicked="GoToTabs_Clicked"/>
 </ContentPage>
