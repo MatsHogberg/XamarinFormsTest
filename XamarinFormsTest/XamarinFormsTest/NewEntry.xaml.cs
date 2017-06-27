@@ -11,7 +11,7 @@ namespace XamarinFormsTest
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewEntry : ContentPage
     {
-        public NewEntry()
+    public NewEntry()
         {
             InitializeComponent();
             SetupInterface();
@@ -25,6 +25,8 @@ namespace XamarinFormsTest
         #region User Interface
         private void SetupInterface()
         {
+            Title = "Dagens resultat";
+
             var closeButton = new ToolbarItem
             {
                 Command = new Command(this.CloseButtonClicked),
@@ -32,42 +34,75 @@ namespace XamarinFormsTest
             };
             this.ToolbarItems.Add(closeButton);
 
-            SetupStackLayout();
+            GridLayoutMain();
         }
 
-        private void SetupStackLayout()
+
+        public void GridLayoutMain()
         {
-            var layout = new StackLayout();
-            var button = new Button
-            {
-                Text = "StackLayout",
-                VerticalOptions = LayoutOptions.Start,
-                HorizontalOptions = LayoutOptions.FillAndExpand
-            };
-            var yellowBox = new BoxView { Color = Color.Yellow, VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.FillAndExpand };
-            var greenBox = new BoxView { Color = Color.Green, VerticalOptions = LayoutOptions.FillAndExpand, HorizontalOptions = LayoutOptions.FillAndExpand };
-            var blueBox = new BoxView
-            {
-                Color = Color.Blue,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                HeightRequest = 75
-            };
+            var grid = new Grid();
+            grid.Padding = new Thickness(20);
+            grid.RowSpacing = 15;
 
-            layout.Children.Add(button);
-            layout.Children.Add(yellowBox);
-            layout.Children.Add(greenBox);
-            layout.Children.Add(blueBox);
-            layout.Spacing = 10;
-            Content = layout;
+            // Row Definitions
+            grid.RowDefinitions.Add(new RowDefinition
+            {
+                Height = new GridLength(0.3, GridUnitType.Star)
+            });
+            grid.RowDefinitions.Add(new RowDefinition
+            {
+                Height = new GridLength(0.4, GridUnitType.Star)
+            });
+            grid.RowDefinitions.Add(new RowDefinition
+            {
+                Height = new GridLength(0.3, GridUnitType.Star)
+            });
+
+            // Column Definitions
+            grid.ColumnDefinitions.Add(new ColumnDefinition
+            {
+                Width = new GridLength(1, GridUnitType.Star)
+            });
+
+            var entry = new Entry
+            {
+                Text = "",
+                TextColor = Color.Black,
+                HorizontalTextAlignment = TextAlignment.Center,
+                FontAttributes = FontAttributes.Bold,
+                FontSize = 40,
+                Keyboard = Keyboard.Numeric,
+                Placeholder = "Enter Steps",
+                BackgroundColor = Color.LightGray,
+                VerticalOptions = LayoutOptions.Center,
+                HorizontalOptions = LayoutOptions.Center
+            };
+            entry.Completed += Entry_Completed;
+            entry.TextChanged += Entry_TextChanged;
+
+            grid.Children.Add(entry, 0, 0);
+
+            this.Content = grid;
         }
 
+        private void Entry_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var text = ((Entry)sender).Text;
+            Console.WriteLine(text);
+        }
+
+        private void Entry_Completed(object sender, EventArgs e)
+        {
+            var text = ((Entry)sender).Text;
+            Console.WriteLine("Send {0} as todays result.", text);
+        }
         #endregion
+
 
         #region Button Interactions
         public void CloseButtonClicked()
         {
-            this.Navigation.PopModalAsync();
+                this.Navigation.PopModalAsync();
         }
         #endregion
     }

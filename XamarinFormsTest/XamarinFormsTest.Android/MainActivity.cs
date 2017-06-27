@@ -20,15 +20,9 @@ namespace XamarinFormsTest.Droid
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar; 
 
-			base.OnCreate (bundle);
-            
-            /*
-            var x = new Common.GenericGet();
-            var y = x.GetAsync<TestPostModel>(Common.GenericGet.Resource.posts, "1");
-            if (!y.IsFaulted && y.Result != null)
-            {
-                Console.WriteLine(y.Result.title);
-            }*/
+			base.OnCreate(bundle);
+
+            Window.SetStatusBarColor(Android.Graphics.Color.ParseColor("#F5D547"));
 
             global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new XamarinFormsTest.App ());

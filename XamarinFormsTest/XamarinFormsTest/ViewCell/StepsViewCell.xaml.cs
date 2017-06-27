@@ -14,18 +14,19 @@ namespace XamarinFormsTest.ViewCells
 	{
 		public StepsViewCell ()
 		{
-			InitializeComponent ();
+			InitializeComponent();
+
             // Instantiate each of our views
             StackLayout cellWrapper = new StackLayout();
             StackLayout verticalLayout = new StackLayout();
             Label steps = new Label();
             Label date = new Label();
 
-            // Set bindings
+            // Set Bindings
             steps.SetBinding(Label.TextProperty, "Steps".ToString());
             date.SetBinding(Label.TextProperty, "Date");
 
-            // Set properties for desired design
+            // Set Properties for desired design
             cellWrapper.Padding = 20;
             cellWrapper.BackgroundColor = Color.White;
             verticalLayout.Orientation = StackOrientation.Vertical;
@@ -35,10 +36,10 @@ namespace XamarinFormsTest.ViewCells
             steps.FontAttributes = FontAttributes.Bold;
 
             date.TextColor = Color.LightGray;
-            date.FontSize = 12;
+            date.FontSize = 14;
             date.VerticalOptions = LayoutOptions.EndAndExpand;
 
-            // Add views to the view hierarchy
+            // Add Views to the view hierarchy
             verticalLayout.Children.Add(steps);
             verticalLayout.Children.Add(date);
             cellWrapper.Children.Add(verticalLayout);

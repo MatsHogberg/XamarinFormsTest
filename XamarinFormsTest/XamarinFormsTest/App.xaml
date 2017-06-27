@@ -2,21 +2,16 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XamarinFormsTest.App">
-	<Application.Resources>
-
+    <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="V_Blue">#00aaeb</Color>
-            <Color x:Key="V_Orange">#f5781e</Color>
-
+            <Color x:Key="CrispyYellow">#F5D547</Color>
             <Style TargetType="NavigationPage">
-                <Setter Property="BarBackgroundColor" Value="IndianRed" />
+                <Setter Property="BarBackgroundColor" Value="{StaticResource CrispyYellow}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
-
             <Style TargetType="TabbedPage">
-                <Setter Property="BarBackgroundColor" Value="IndianRed" />
+                <Setter Property="BarBackgroundColor" Value="{StaticResource CrispyYellow}" />
             </Style>
         </ResourceDictionary>
-        
 	</Application.Resources>
 </Application>
