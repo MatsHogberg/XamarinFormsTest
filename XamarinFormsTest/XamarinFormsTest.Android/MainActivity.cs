@@ -10,7 +10,7 @@ using XamarinFormsTest.Common;
 using Common.Models;
 namespace XamarinFormsTest.Droid
 {
-	[Activity (Label = "XamarinFormsTest", Icon = "@drawable/icon", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+	[Activity (Label = "XamarinFormsTest", Icon = "@drawable/ic_launcher", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate (Bundle bundle)
@@ -19,12 +19,13 @@ namespace XamarinFormsTest.Droid
 			ToolbarResource = Resource.Layout.Toolbar; 
 
 			base.OnCreate (bundle);
-            var x = new Common.GenericGet();
-            var y = x.GetAsync<TestPostModel>("http://jsonplaceholder.typicode.com/posts", "1");
-            if (!y.IsFaulted && y.Result != null)
-            {
-                Console.WriteLine(y.Result.title);
-            }
+
+            //var x = new Common.GenericGet();
+            //var y = x.GetAsync<TestPostModel>("http://jsonplaceholder.typicode.com/posts", "1");
+            //if (!y.IsFaulted && y.Result != null)
+            //{
+            //    Console.WriteLine(y.Result.title);
+            //}
             global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new XamarinFormsTest.App ());
 		}
