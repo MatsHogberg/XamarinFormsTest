@@ -20,7 +20,7 @@ namespace XamarinFormsTest.Droid
 
 			base.OnCreate (bundle);
             var x = new Common.GenericGet();
-            var y = x.GetAsync<TestPostModel>("https://jsonplaceholder.typicode.com/posts", "1");
+            var y = x.GetAsync<TestPostModel>("http://jsonplaceholder.typicode.com/posts", "1");
             if (!y.IsFaulted && y.Result != null)
             {
                 Console.WriteLine(y.Result.title);

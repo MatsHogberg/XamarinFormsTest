@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Diagnostics;
-
+using ModernHttpClient;
 namespace XamarinFormsTest.Common
 {
     public class GenericGet
@@ -14,7 +14,9 @@ namespace XamarinFormsTest.Common
         {
             var serviceUrl = baseUrl + (param1 != null ? "/" + param1 : string.Empty) + (param2 != null ? "/" + param2 : string.Empty) + (param3 != null ? "/" + param3 : string.Empty) ;
 
-            using (var client = new HttpClient())
+            var messageHandler = new NativeMessageHandler();
+            messageHandler.ClientCertificateOptions = ClientCertificateOption.Automatic;
+            using (var client = new HttpClient(messageHandler))
             {
                 try
                 {
