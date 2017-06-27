@@ -4,7 +4,19 @@
              x:Class="XamarinFormsTest.App">
 	<Application.Resources>
 
-		<!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Color x:Key="V_Blue">#00aaeb</Color>
+            <Color x:Key="V_Orange">#f5781e</Color>
 
+            <Style TargetType="NavigationPage">
+                <Setter Property="BarBackgroundColor" Value="IndianRed" />
+                <Setter Property="BarTextColor" Value="White" />
+            </Style>
+
+            <Style TargetType="TabbedPage">
+                <Setter Property="BarBackgroundColor" Value="IndianRed" />
+            </Style>
+        </ResourceDictionary>
+        
 	</Application.Resources>
 </Application>

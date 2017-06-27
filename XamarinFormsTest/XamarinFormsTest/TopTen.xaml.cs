@@ -16,5 +16,16 @@ namespace XamarinFormsTest
 		{
 			InitializeComponent ();
 		}
-	}
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SetupInterface();
+        }
+
+        private void SetupInterface()
+        {
+            Title = "Topplistan";
+        }
+    }
 }

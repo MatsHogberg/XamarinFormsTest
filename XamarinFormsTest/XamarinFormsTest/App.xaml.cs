@@ -12,11 +12,28 @@ namespace XamarinFormsTest
 		public App ()
 		{
 			InitializeComponent();
-            // Test Comment.
-			MainPage = new XamarinFormsTest.MainPage();
-		}
+            SetupNavigation();
+        }
 
-		protected override void OnStart ()
+        public static void SetupNavigation()
+        {
+            Current.MainPage = new TabbedPage
+            {
+                Children =
+                {
+                    new NavigationPage(new MyEntries())
+                    {
+                        Title = "Mina Steg"
+                    },
+                    new NavigationPage(new TopTen())
+                    {
+                        Title = "Topplistan"
+                    }
+                }
+            };
+        }
+
+        protected override void OnStart ()
 		{
 			// Handle when your app starts
 		}
