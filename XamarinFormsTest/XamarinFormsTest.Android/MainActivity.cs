@@ -8,6 +8,8 @@ using Android.Widget;
 using Android.OS;
 using XamarinFormsTest.Common;
 using Common.Models;
+using System.Collections.Generic;
+
 namespace XamarinFormsTest.Droid
 {
 	[Activity (Label = "XamarinFormsTest", Icon = "@drawable/icon", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -19,12 +21,14 @@ namespace XamarinFormsTest.Droid
 			ToolbarResource = Resource.Layout.Toolbar; 
 
 			base.OnCreate (bundle);
+        
             var x = new Common.GenericGet();
-            var y = x.GetAsync<TestPostModel>("https://jsonplaceholder.typicode.com/posts", "1");
+            var y = x.GetAsync<TestUserModel>(GenericGet.Resource.posts, "1", "comments");
             if (!y.IsFaulted && y.Result != null)
             {
-                Console.WriteLine(y.Result.title);
+                Console.WriteLine("Username: {0}", y);
             }
+
             global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new XamarinFormsTest.App ());
 		}
