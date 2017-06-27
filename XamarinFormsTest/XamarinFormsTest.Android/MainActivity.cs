@@ -6,7 +6,8 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
-
+using XamarinFormsTest.Common;
+using Common.Models;
 namespace XamarinFormsTest.Droid
 {
 	[Activity (Label = "XamarinFormsTest", Icon = "@drawable/icon", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
@@ -18,8 +19,13 @@ namespace XamarinFormsTest.Droid
 			ToolbarResource = Resource.Layout.Toolbar; 
 
 			base.OnCreate (bundle);
-
-			global::Xamarin.Forms.Forms.Init (this, bundle);
+            var x = new Common.GenericGet();
+            var y = x.GetAsync<TestPostModel>("https://jsonplaceholder.typicode.com/posts", "1");
+            if (!y.IsFaulted && y.Result != null)
+            {
+                Console.WriteLine(y.Result.title);
+            }
+            global::Xamarin.Forms.Forms.Init (this, bundle);
 			LoadApplication (new XamarinFormsTest.App ());
 		}
 	}
