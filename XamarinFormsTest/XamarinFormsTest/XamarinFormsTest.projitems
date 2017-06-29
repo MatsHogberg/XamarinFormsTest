@@ -27,6 +27,7 @@
       <DependentUpon>TopTen.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\Colors.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewCells\StepsViewCell.xaml.cs">
       <DependentUpon>StepsViewCell.xaml</DependentUpon>
       <SubType>Code</SubType>
