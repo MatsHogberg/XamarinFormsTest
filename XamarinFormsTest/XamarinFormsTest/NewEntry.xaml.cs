@@ -11,13 +11,13 @@ namespace XamarinFormsTest
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewEntry : ContentPage
     {
-    public NewEntry()
+        public NewEntry()
         {
             InitializeComponent();
             SetupInterface();
         }
 
-        protected override void OnAppearing()
+       protected override void OnAppearing()
         {
             base.OnAppearing();
         }
@@ -40,9 +40,11 @@ namespace XamarinFormsTest
 
         public void GridLayoutMain()
         {
-            var grid = new Grid();
-            grid.Padding = new Thickness(20);
-            grid.RowSpacing = 15;
+            var grid = new Grid()
+            {
+                Padding = new Thickness(20),
+                RowSpacing = 15
+            };
 
             // Row Definitions
             grid.RowDefinitions.Add(new RowDefinition
@@ -88,13 +90,13 @@ namespace XamarinFormsTest
         private void Entry_TextChanged(object sender, TextChangedEventArgs e)
         {
             var text = ((Entry)sender).Text;
-            Console.WriteLine(text);
+            //Console.WriteLine(text);
         }
 
         private void Entry_Completed(object sender, EventArgs e)
         {
             var text = ((Entry)sender).Text;
-            Console.WriteLine("Send {0} as todays result.", text);
+            // Console.WriteLine("Send {0} as todays result.", text);
         }
         #endregion
 

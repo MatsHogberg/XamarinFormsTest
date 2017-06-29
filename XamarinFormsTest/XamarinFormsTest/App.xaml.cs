@@ -23,13 +23,11 @@ namespace XamarinFormsTest
                 {
                     new NavigationPage(new MyEntries())
                     {
-                        Title = "Mina Steg",
-                        // Icon = "tab-me.png"
+                        Title = "Mina Steg"
                     },
                     new NavigationPage(new TopTen())
                     {
-                        Title = "Topplistan",
-                        // Icon = "tab-star.png",
+                        Title = "Topplistan"
                     }
                 }
             };

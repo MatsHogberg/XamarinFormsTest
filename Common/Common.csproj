@@ -37,8 +37,7 @@
   <ItemGroup>
     <Compile Include="GenericGet.cs" />
     <Compile Include="Models\StepsModel.cs" />
-    <Compile Include="Models\TestPostModel.cs" />
-    <Compile Include="Models\TestUserModel.cs" />
+    <Compile Include="Models\TopTenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

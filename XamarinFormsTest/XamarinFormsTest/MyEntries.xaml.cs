@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Diagnostics;
 using XamarinFormsTest.ViewCells;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -19,20 +16,20 @@ namespace XamarinFormsTest
         {
             InitializeComponent();
 
-            var listView = new ListView();
-            listView.ItemTemplate = new DataTemplate(typeof(StepsViewCell));
-            listView.ItemsSource = Data.StepsList;
-            listView.RowHeight = 100;
-            listView.IsPullToRefreshEnabled = true;
+            var listView = new ListView()
+            {
+                ItemTemplate = new DataTemplate(typeof(StepsViewCell)),
+                ItemsSource = StepsModel.StepsList,
+                RowHeight = 100,
+                IsPullToRefreshEnabled = true
+            };
             listView.RefreshCommand = new Command(() =>
             {
                 listView.IsRefreshing = false;
             });
             Content = listView;
-
             // Setup Interface
             SetupInterface();
-
         }
         #endregion
 
@@ -58,7 +55,7 @@ namespace XamarinFormsTest
             var request = service.GetAsync<StepsModel>(Common.GenericGet.Resource.posts);
             if (!request.IsFaulted && request.Result != null)
             {
-                Console.WriteLine("Result: {0}", request.Result);
+                // Console.WriteLine("Result: {0}", request.Result);
             }
         }
         #endregion
