@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using XamarinFormsTest.CustomRenderers;
 
 namespace XamarinFormsTest
 {
@@ -17,17 +18,19 @@ namespace XamarinFormsTest
 
         public static void SetupNavigation()
         {
-            Current.MainPage = new TabbedPage
+            Current.MainPage = new CustomTabbedPage
             {
                 Children =
                 {
                     new NavigationPage(new MyEntries())
                     {
-                        Title = "Mina Steg"
+                        Title = "",
+                        Icon = "icon_walk.png"
                     },
                     new NavigationPage(new TopTen())
                     {
-                        Title = "Topplistan"
+                        Title = "",
+                        Icon = "icon_star.png"
                     }
                 }
             };

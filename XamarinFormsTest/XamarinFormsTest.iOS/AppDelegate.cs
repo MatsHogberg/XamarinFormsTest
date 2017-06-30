@@ -24,7 +24,15 @@ namespace XamarinFormsTest.iOS
 		{
 			global::Xamarin.Forms.Forms.Init ();
 			LoadApplication (new XamarinFormsTest.App ());
-			return base.FinishedLaunching (app, options);
+
+            var tabbarAppperance = UITabBar.Appearance;
+            tabbarAppperance.SelectedImageTintColor = UIColor.Black;
+            return base.FinishedLaunching (app, options);
 		}
-	}
+
+        private void SetupOverallUI()
+        {
+            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
+        }
+    }
 }

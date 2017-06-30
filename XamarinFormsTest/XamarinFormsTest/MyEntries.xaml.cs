@@ -41,7 +41,8 @@ namespace XamarinFormsTest
             var addButton = new ToolbarItem
             {
                 Command = new Command(this.AddNewEntryButtonClicked),
-                Text = "Lägg Till",
+                Text = "",
+                Icon = "icon_add.png"
             };
             this.ToolbarItems.Add(addButton);
         }

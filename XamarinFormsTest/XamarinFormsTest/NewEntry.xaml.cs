@@ -1,18 +1,16 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinFormsTest.Utilities;
+using XamarinFormsTest.CustomRenderers;
+
 namespace XamarinFormsTest
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NewEntry : ContentPage
     {
-
-        Entry stepsEntry = new Entry();
+ 
+        CustomEntry stepsEntry = new CustomEntry();
 
         public NewEntry()
         {
@@ -66,18 +64,8 @@ namespace XamarinFormsTest
         }
 
         // Entry view to let the user type in their daily result.
-        private Entry StepsEntry()
+        private CustomEntry StepsEntry()
         {
-            stepsEntry.Text = "";
-            stepsEntry.TextColor = Color.Black;
-            stepsEntry.HorizontalTextAlignment = TextAlignment.Center;
-            stepsEntry.FontAttributes = FontAttributes.Bold;
-            stepsEntry.FontSize = 40;
-            stepsEntry.Keyboard = Keyboard.Numeric;
-            stepsEntry.Placeholder = "Antal steg";
-            stepsEntry.BackgroundColor = Color.White;
-            stepsEntry.VerticalOptions = LayoutOptions.Center;
-            stepsEntry.HorizontalOptions = LayoutOptions.Center;
             stepsEntry.Completed += Entry_Completed;
             return stepsEntry;
         }
@@ -85,14 +73,7 @@ namespace XamarinFormsTest
         // Save Button which appears at the bottom of the screen. 
         private Button SaveButton()
         {
-            var button = new Button
-            {
-                Text = "Spara",
-                TextColor = Color.White,
-                BackgroundColor = Colors.StepsGreen,
-                FontSize = 18,
-                FontAttributes = FontAttributes.Bold
-            };
+            var button = new SaveButton();
             button.Clicked += Button_Clicked;
             return button;
         }
@@ -103,7 +84,8 @@ namespace XamarinFormsTest
             var closeButton = new ToolbarItem
             {
                 Command = new Command(this.CloseButtonClicked),
-                Text = "Stäng"
+                Text = "",
+                Icon = "ic_clear_white_48pt.png"
             };
             return closeButton;
         }
