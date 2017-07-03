@@ -4,6 +4,7 @@ using XamarinFormsTest.ViewCells;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Common.Models;
+using XamarinFormsTest.CustomRenderers;
 
 namespace XamarinFormsTest
 {
@@ -15,19 +16,18 @@ namespace XamarinFormsTest
         public MyEntries()
         {
             InitializeComponent();
-
-            var listView = new ListView()
+            var list = new CustomListView()
             {
                 ItemTemplate = new DataTemplate(typeof(StepsViewCell)),
                 ItemsSource = StepsModel.StepsList,
-                RowHeight = 100,
                 IsPullToRefreshEnabled = true
             };
-            listView.RefreshCommand = new Command(() =>
+            list.RefreshCommand = new Command(() =>
             {
-                listView.IsRefreshing = false;
+                list.IsRefreshing = false;
             });
-            Content = listView;
+            Content = list;
+
             // Setup Interface
             SetupInterface();
         }
@@ -71,11 +71,11 @@ namespace XamarinFormsTest
 
 
         #region Navigation
-        private void OpenNewEntryPage()
+        async void OpenNewEntryPage()
         {
             var page = new NewEntry();
             var newEntryPage = new NavigationPage(page);
-            this.Navigation.PushModalAsync(newEntryPage);
+            await this.Navigation.PushModalAsync(newEntryPage);
 
         }
         #endregion

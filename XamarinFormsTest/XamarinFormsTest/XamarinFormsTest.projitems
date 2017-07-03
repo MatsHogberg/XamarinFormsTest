@@ -13,6 +13,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)CustomRenderers\CustomEntry.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomRenderers\CustomListView.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomRenderers\CustomTabbedPage.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CustomRenderers\SaveButton.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MainPage.xaml.cs">

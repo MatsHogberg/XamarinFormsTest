@@ -5,7 +5,7 @@ using Android.OS;
 
 namespace XamarinFormsTest.Droid
 {
-    [Activity (Label = "XamarinFormsTest", Icon = "@drawable/ic_launcher", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity (Label = "Stepper", Icon = "@drawable/ic_launcher", Theme="@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
 	{
 		protected override void OnCreate (Bundle bundle)

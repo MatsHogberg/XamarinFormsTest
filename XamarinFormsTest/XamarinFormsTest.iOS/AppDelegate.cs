@@ -27,6 +27,9 @@ namespace XamarinFormsTest.iOS
 
             var tabbarAppperance = UITabBar.Appearance;
             tabbarAppperance.SelectedImageTintColor = UIColor.Black;
+
+            UIApplication.SharedApplication.SetStatusBarStyle(UIStatusBarStyle.LightContent, false);
+
             return base.FinishedLaunching (app, options);
 		}
 

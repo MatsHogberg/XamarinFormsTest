@@ -2,6 +2,7 @@
 using Xamarin.Forms.Xaml;
 using Common.Models;
 using XamarinFormsTest.ViewCells;
+using XamarinFormsTest.CustomRenderers;
 
 namespace XamarinFormsTest
 {
@@ -12,19 +13,17 @@ namespace XamarinFormsTest
 		{
 			InitializeComponent ();
 
-
-            var listView2 = new ListView()
+            var list = new CustomListView()
             {
                 ItemsSource = TopTenModel.TopList,
-                RowHeight = 100,
                 IsPullToRefreshEnabled = true,
                 ItemTemplate = new DataTemplate(typeof(TopTenViewCell))
             };
-            listView2.RefreshCommand = new Command(() =>
+            list.RefreshCommand = new Command(() =>
             {
-                listView2.IsRefreshing = false;
+                list.IsRefreshing = false;
             });
-            Content = listView2;
+            Content = list;
             
         }
 

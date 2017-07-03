@@ -43,11 +43,11 @@ namespace XamarinFormsTest
             });
             grid.RowDefinitions.Add(new RowDefinition
             {
-                Height = new GridLength(0.4, GridUnitType.Star)
+                Height = new GridLength(0.6, GridUnitType.Star)
             });
             grid.RowDefinitions.Add(new RowDefinition
             {
-                Height = new GridLength(0.15, GridUnitType.Star)
+                Height = new GridLength(0.1, GridUnitType.Star)
             });
 
             // Column Definitions
@@ -85,7 +85,7 @@ namespace XamarinFormsTest
             {
                 Command = new Command(this.CloseButtonClicked),
                 Text = "",
-                Icon = "ic_clear_white_48pt.png"
+                Icon = "icon_close.png"
             };
             return closeButton;
         }
