@@ -1,6 +1,13 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Concurrent;
+using System.Collections.Specialized;
+using Xamarin.Forms;
+using Xamarin.Forms.Internals;
+using System.ComponentModel;
+using XamarinFormsTest;
 
 namespace Common.Models
 {
@@ -9,18 +16,39 @@ namespace Common.Models
         public int Steps { get; set; }
         public string Date { get; set; }
 
-        #region Object List.     
+        public StepsModel()
+        {
+            StepsList.CollectionChanged += ContentCollectionChanged;
+        }
+
+        #region Object List.
         public static ObservableCollection<StepsModel> StepsList = new ObservableCollection<StepsModel>
         {
-            new StepsModel { Steps = 2000, Date = "2017-06-27" },
-            new StepsModel { Steps = 2460, Date = "2017-06-26" },
-            new StepsModel { Steps = 22300, Date = "2017-06-25" },
-            new StepsModel { Steps = 6300, Date = "2017-06-24" },
-            new StepsModel { Steps = 7402, Date = "2017-06-23" },
-            new StepsModel { Steps = 10236, Date = "2017-06-22" },
-            new StepsModel { Steps = 9872, Date = "2017-06-21" },
+            // We start with an empty list.
         };
         #endregion
 
+        public void ContentCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        {
+            switch (e.Action)
+            {
+                case NotifyCollectionChangedAction.Add:
+                    Debug.WriteLine("Item added.");
+                    break;
+                case NotifyCollectionChangedAction.Remove:
+                    Debug.WriteLine("Item Deleted.");
+                    break;
+            }
+        }
+
+        public static void AddNew(int steps, string date)
+        {
+            var newObject = new StepsModel
+            {
+                Steps = steps,
+                Date = date
+            };
+            StepsList.Add(newObject);
+        }
     }
 }

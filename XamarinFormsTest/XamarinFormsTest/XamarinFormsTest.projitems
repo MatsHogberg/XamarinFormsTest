@@ -33,6 +33,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\Colors.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\ToolbarItemsSource.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ViewCells\StepsViewCell.xaml.cs">
       <DependentUpon>StepsViewCell.xaml</DependentUpon>
       <SubType>Code</SubType>

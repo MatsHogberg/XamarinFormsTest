@@ -15,7 +15,7 @@ namespace XamarinFormsTest.CustomRenderers
 
         private void SetupUI()
         {
-            Text = "Spara";
+            Text = "Spara".ToUpper();
             TextColor = Color.White;
             BackgroundColor = Colors.StepsYellowDark;
             FontSize = 18;

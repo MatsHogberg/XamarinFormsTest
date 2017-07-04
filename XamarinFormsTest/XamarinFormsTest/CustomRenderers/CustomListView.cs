@@ -27,13 +27,13 @@ namespace XamarinFormsTest.CustomRenderers
             grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(0.2, GridUnitType.Star) });
 
             // Setup the Header Title.
-            this.headerTitle.VerticalOptions = LayoutOptions.Center;
-            this.headerTitle.HorizontalOptions = LayoutOptions.Start;
-            this.headerTitle.Text = title;
-            this.headerTitle.TextColor = Color.LightGray;
-            this.headerTitle.FontSize = 18;
-            this.headerTitle.FontAttributes = FontAttributes.Bold;
-            this.headerTitle.Margin = new Thickness(20, 0, 0, 0);
+            headerTitle.VerticalOptions = LayoutOptions.Center;
+            headerTitle.HorizontalOptions = LayoutOptions.Start;
+            headerTitle.Text = title;
+            headerTitle.TextColor = Color.LightGray;
+            headerTitle.FontSize = 18;
+            headerTitle.FontAttributes = FontAttributes.Bold;
+            headerTitle.Margin = new Thickness(20, 0, 0, 0);
 
             // Setup the Sort Button.
             var sortButton = new Button {
@@ -42,12 +42,12 @@ namespace XamarinFormsTest.CustomRenderers
                 FontAttributes = FontAttributes.Bold,
                 FontSize = 9,
                 BackgroundColor = Color.Transparent,
-                HorizontalOptions = LayoutOptions.End
+                HorizontalOptions = LayoutOptions.Center
             };
             sortButton.Clicked += SortButton_Clicked;
 
             // Add the views to the grids columns.
-            grid.Children.Add(this.headerTitle, 0, 0);
+            grid.Children.Add(headerTitle, 0, 0);
             grid.Children.Add(sortButton, 1, 0);
 
             // Add The grid to the listviews header.

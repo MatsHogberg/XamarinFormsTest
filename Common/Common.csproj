@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GenericGet.cs" />
+    <Compile Include="Helpers.cs" />
     <Compile Include="Models\StepsModel.cs" />
     <Compile Include="Models\TopTenModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

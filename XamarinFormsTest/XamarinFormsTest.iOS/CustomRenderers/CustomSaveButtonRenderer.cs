@@ -23,10 +23,7 @@ namespace XamarinFormsTest.iOS.CustomRenderers
 
             if (Control != null)
             {
-                
-                Console.WriteLine("ButtonFrame: {0}", Control);
-                Control.SetNeedsDisplay();
-                Control.Layer.CornerRadius = 20;
+                Control.Layer.CornerRadius = 30;
                 Control.ClipsToBounds = true;
             }
         }

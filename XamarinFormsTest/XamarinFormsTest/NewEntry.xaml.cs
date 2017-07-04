@@ -3,6 +3,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XamarinFormsTest.Utilities;
 using XamarinFormsTest.CustomRenderers;
+using Common.Models;
+using Common;
 
 namespace XamarinFormsTest
 {
@@ -37,24 +39,12 @@ namespace XamarinFormsTest
             };
 
             // Row Definitions
-            grid.RowDefinitions.Add(new RowDefinition
-            {
-                Height = new GridLength(0.3, GridUnitType.Star)
-            });
-            grid.RowDefinitions.Add(new RowDefinition
-            {
-                Height = new GridLength(0.6, GridUnitType.Star)
-            });
-            grid.RowDefinitions.Add(new RowDefinition
-            {
-                Height = new GridLength(0.1, GridUnitType.Star)
-            });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0.3, GridUnitType.Star) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(0.6, GridUnitType.Star) });
+            grid.RowDefinitions.Add(new RowDefinition { Height = new GridLength(50) });
 
             // Column Definitions
-            grid.ColumnDefinitions.Add(new ColumnDefinition
-            {
-                Width = new GridLength(1, GridUnitType.Star)
-            });
+            grid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
 
             // Add subviews to grid.
             grid.Children.Add(StepsEntry(), 0, 0);
@@ -117,7 +107,7 @@ namespace XamarinFormsTest
             }
             else
             {
-                Navigation.PopModalAsync();
+                CreateNew();
             }
         }
 
@@ -135,5 +125,18 @@ namespace XamarinFormsTest
                 this.Navigation.PopModalAsync();
         }
         #endregion
+
+        public void CreateNew()
+        {
+            var steps = Convert.ToInt32(stepsEntry.Text);
+
+            /*Future function might be to check if there already is a object from today. 
+             * So the use never can add two results during the same day.*/
+
+            StepsModel.AddNew(steps, Helpers.TodaysDateAsString());
+            Navigation.PopModalAsync();
+        }
+
+
     }
 }

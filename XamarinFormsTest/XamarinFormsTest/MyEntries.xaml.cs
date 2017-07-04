@@ -14,46 +14,72 @@ namespace XamarinFormsTest
     public partial class MyEntries : ContentPage
     {
 
+        CustomListView listView = new CustomListView();
+
         #region Lifecycle
         public MyEntries()
         {
             InitializeComponent();
-            var list = new CustomListView()
-            {
-                ItemTemplate = new DataTemplate(typeof(StepsViewCell)),
-                ItemsSource = StepsModel.StepsList,
-                IsPullToRefreshEnabled = true,
-            };
-            list.RefreshCommand = new Command(() =>
-            {
-                list.IsRefreshing = false;
-            });
-            Content = list;
-            list.SetupHeader("Senaste");
-
+            // Get Data.
+            GetData();      
             // Setup Interface
             SetupInterface();
         }
         #endregion
+
+
 
         #region User Interface
         private void SetupInterface()
         {
             Title = "Mina Steg";
 
-            var addButton = new ToolbarItem
-            {
-                Command = new Command(this.AddNewEntryButtonClicked),
-                Text = "",
-                Icon = "icon_add.png"
-            };
+            var addButton = ToolbarItemsSource.AddItem();
+            addButton.Command = new Command(this.AddNewEntryButtonClicked);
             this.ToolbarItems.Add(addButton);
         }
+
+        public void BindResultToData()
+        {
+
+            listView.ItemTemplate = new DataTemplate(typeof(StepsViewCell));
+            listView.ItemsSource = StepsModel.StepsList;
+            listView.IsPullToRefreshEnabled = true;
+            listView.RefreshCommand = new Command(() =>
+            {
+                listView.IsRefreshing = false;
+            });
+            listView.SetupHeader("Senaste");
+
+            // Add The list view to the views content.
+            Content = listView;
+            /*
+            if (StepsModel.StepsList.Count > 1)
+            {
+
+                listView.ItemTemplate = new DataTemplate(typeof(StepsViewCell));
+                listView.ItemsSource = StepsModel.StepsList;
+                listView.IsPullToRefreshEnabled = true;
+                listView.BindingContextChanged += ListView_BindingContextChanged;
+                listView.RefreshCommand = new Command(() =>
+                {
+                    listView.IsRefreshing = false;
+                });
+                listView.SetupHeader("Senaste");
+
+                // Add The list view to the views content.
+                Content = listView;
+            } else
+            {
+                ShowNoResultMessage();
+            }*/
+        }
+
         #endregion
 
 
         #region Fetch Data
-        private void GetData()
+        public void GetData()
         {
             var service = new Common.GenericGet();
             var request = service.GetAsync<StepsModel>(Common.GenericGet.Resource.posts);
@@ -61,28 +87,33 @@ namespace XamarinFormsTest
             {
                 // Console.WriteLine("Result: {0}", request.Result);
             }
+            BindResultToData();
         }
         #endregion
 
+        private void ShowNoResultMessage()
+        {
+            var label = new Label()
+            {
+                Text = "No Results Found.",
+                TextColor = Color.DarkGray,
+                VerticalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalOptions = LayoutOptions.CenterAndExpand
+            };
+
+            StackLayout stack = new StackLayout()
+            {
+                Orientation = StackOrientation.Vertical,
+            };
+
+            stack.Children.Add(label);
+            Content = stack;
+        }
 
         #region Button Interactions
         private void AddNewEntryButtonClicked()
         {
-            //OpenNewEntryPage();
-            Console.WriteLine("Button Clicked");
-
-            var monkeyList = new List<string>();
-            monkeyList.Add("Baboon");
-            monkeyList.Add("Capuchin Monkey");
-            monkeyList.Add("Blue Monkey");
-            monkeyList.Add("Squirrel Monkey");
-            monkeyList.Add("Golden Lion Tamarin");
-            monkeyList.Add("Howler Monkey");
-            monkeyList.Add("Japanese Macaque");
-
-            var picker = new Picker { Title = "Select a monkey" };
-            picker.ItemsSource = monkeyList;
-            picker.Focus();
+            OpenNewEntryPage();
         }
         #endregion
 
