@@ -90,6 +90,7 @@
   <ItemGroup>
     <Compile Include="CustomRenderers\CustomEntryRenderer.cs" />
     <Compile Include="CustomRenderers\CustomListViewRenderer.cs" />
+    <Compile Include="CustomRenderers\CustomPageRenderer.cs" />
     <Compile Include="CustomRenderers\CustomSaveButtonRenderer.cs" />
     <Compile Include="CustomRenderers\CustomTabbedPageRenderer.cs" />
     <Compile Include="Main.cs" />

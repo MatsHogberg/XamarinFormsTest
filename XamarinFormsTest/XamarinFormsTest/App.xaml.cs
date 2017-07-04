@@ -18,22 +18,7 @@ namespace XamarinFormsTest
 
         public static void SetupNavigation()
         {
-            Current.MainPage = new CustomTabbedPage
-            {
-                Children =
-                {
-                    new NavigationPage(new MyEntries())
-                    {
-                        Title = "",
-                        Icon = "icon_walk.png"
-                    },
-                    new NavigationPage(new TopTen())
-                    {
-                        Title = "",
-                        Icon = "icon_star.png"
-                    }
-                }
-            };
+            Current.MainPage = new CustomTabbedPage();
         }
 
         protected override void OnStart ()

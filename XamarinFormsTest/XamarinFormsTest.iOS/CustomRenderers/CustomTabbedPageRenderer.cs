@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using UIKit;
+﻿using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 using XamarinFormsTest.CustomRenderers;
 using XamarinFormsTest.iOS.CustomRenderers;
-using XamarinFormsTest.Utilities;
 
 [assembly: ExportRenderer(typeof(CustomTabbedPage), typeof(CustomTabbedPageRenderer))]
 namespace XamarinFormsTest.iOS.CustomRenderers
@@ -14,8 +10,8 @@ namespace XamarinFormsTest.iOS.CustomRenderers
     public class CustomTabbedPageRenderer : Xamarin.Forms.Platform.iOS.TabbedRenderer
     {
 
-        readonly nfloat imageYOffset = 5;
-
+        readonly UIEdgeInsets insets = new UIEdgeInsets(5, 0, -5, 0);
+        
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
             base.OnElementChanged(e);
@@ -27,23 +23,16 @@ namespace XamarinFormsTest.iOS.CustomRenderers
             tabbarAppearance.SelectedImageTintColor = UIColor.FromRGB(245, 213, 71);
         }
 
-        public override UIViewController SelectedViewController
+        public override void ViewWillAppear(bool animated)
         {
-            get
-            {
-                if (base.SelectedViewController != null)
-                {
-                    base.SelectedViewController.TabBarItem.ImageInsets = new UIEdgeInsets(imageYOffset, 0, -imageYOffset, 0);
-                }
-                return base.SelectedViewController;
-            }
-            set
-            {
-                base.SelectedViewController = value;
+            base.ViewWillAppear(animated);
 
-                foreach (UIViewController viewController in base.ViewControllers)
+            if (TabBar.Items != null)
+            {
+                var items = TabBar.Items;
+                for (int i = 0; i < items.Length; i++)
                 {
-                    viewController.TabBarItem.ImageInsets = new UIEdgeInsets(imageYOffset, 0, -imageYOffset, 0);
+                    items[i].ImageInsets = insets;
                 }
             }
         }

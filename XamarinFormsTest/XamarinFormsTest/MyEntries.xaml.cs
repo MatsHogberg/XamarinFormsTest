@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Collections.Generic;
 using XamarinFormsTest.ViewCells;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Common.Models;
 using XamarinFormsTest.CustomRenderers;
+using XamarinFormsTest.Utilities;
 
 namespace XamarinFormsTest
 {
@@ -20,13 +22,14 @@ namespace XamarinFormsTest
             {
                 ItemTemplate = new DataTemplate(typeof(StepsViewCell)),
                 ItemsSource = StepsModel.StepsList,
-                IsPullToRefreshEnabled = true
+                IsPullToRefreshEnabled = true,
             };
             list.RefreshCommand = new Command(() =>
             {
                 list.IsRefreshing = false;
             });
             Content = list;
+            list.SetupHeader("Senaste");
 
             // Setup Interface
             SetupInterface();
@@ -65,7 +68,21 @@ namespace XamarinFormsTest
         #region Button Interactions
         private void AddNewEntryButtonClicked()
         {
-            OpenNewEntryPage();
+            //OpenNewEntryPage();
+            Console.WriteLine("Button Clicked");
+
+            var monkeyList = new List<string>();
+            monkeyList.Add("Baboon");
+            monkeyList.Add("Capuchin Monkey");
+            monkeyList.Add("Blue Monkey");
+            monkeyList.Add("Squirrel Monkey");
+            monkeyList.Add("Golden Lion Tamarin");
+            monkeyList.Add("Howler Monkey");
+            monkeyList.Add("Japanese Macaque");
+
+            var picker = new Picker { Title = "Select a monkey" };
+            picker.ItemsSource = monkeyList;
+            picker.Focus();
         }
         #endregion
 
@@ -76,7 +93,6 @@ namespace XamarinFormsTest
             var page = new NewEntry();
             var newEntryPage = new NavigationPage(page);
             await this.Navigation.PushModalAsync(newEntryPage);
-
         }
         #endregion
 
